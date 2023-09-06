@@ -11,7 +11,6 @@ while (execucao) {
     console.log(`Opções:`);
     console.log(`1 - Cadastrar cliente`);
     console.log(`2 - Listar todos os clientes`);
-    console.log(`3 - Cadastrar produto`);
     console.log(`0 - Sair`);
 
     let entrada = new Entrada()
