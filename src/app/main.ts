@@ -12,9 +12,9 @@ let execucao = true
 while (execucao) {
     console.log(`Opções:`);
     console.log(`1 - Cadastrar cliente`);
-    console.log(`2 - Listar todos os clientes`);
+    console.log(`2 - Listar clientes`);
     console.log(`3 - Cadastrar produto`);
-    console.log(`4 - Listar todos os produtos`);
+    console.log(`4 - Listar produtos`);
     console.log(`0 - Sair`);
 
     let entrada = new Entrada()

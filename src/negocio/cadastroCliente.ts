@@ -26,6 +26,6 @@ export default class CadastroCliente extends Cadastro {
         let cpf = new CPF(valor, dataEmissao);
         let cliente = new Cliente(nome, nomeSocial, genero, cpf);
         this.clientes.push(cliente)
-        console.log(`\nCadastro concluído :)\n`);
+        console.log(`\nCLIENTE CADASTRADO :)\n`);
     }
 }
