@@ -2,6 +2,7 @@ import Entrada from "../io/entrada";
 import Empresa from "../modelo/empresa"
 import CadastroCliente from "../negocio/cadastroCliente";
 import CadastroProduto from "../negocio/cadastroProduto";
+import CadastroServico from "../negocio/cadastroServico";
 import ListagemClientes from "../negocio/listagemClientes";
 import ListagemProdutos from "../negocio/listagemProdutos";
 
@@ -15,6 +16,8 @@ while (execucao) {
     console.log(`2 - Listar clientes`);
     console.log(`3 - Cadastrar produto`);
     console.log(`4 - Listar produtos`);
+    console.log(`5 - Cadastrar serviço`);
+    console.log(`6 - Listar serviços`);
     console.log(`0 - Sair`);
 
     let entrada = new Entrada()
@@ -36,6 +39,10 @@ while (execucao) {
         case 4:
             let listagemPro = new ListagemProdutos(empresa.getProdutos)
             listagemPro.listar()
+            break;
+        case 5:
+            let cadastroSer = new CadastroServico(empresa.getServicos)
+            cadastroSer.cadastrar()
             break;
         case 0:
             execucao = false
