@@ -5,6 +5,7 @@ import CadastroProduto from "../negocio/cadastroProduto";
 import CadastroServico from "../negocio/cadastroServico";
 import ListagemClientes from "../negocio/listagemClientes";
 import ListagemProdutos from "../negocio/listagemProdutos";
+import ListagemServicos from "../negocio/listagemServicos";
 
 console.log(`Bem-vindo ao cadastro de clientes do Grupo World Beauty`)
 let empresa = new Empresa()
@@ -43,6 +44,10 @@ while (execucao) {
         case 5:
             let cadastroSer = new CadastroServico(empresa.getServicos)
             cadastroSer.cadastrar()
+            break;
+        case 6:
+            let listagemSer = new ListagemServicos(empresa.getServicos)
+            listagemSer.listar()
             break;
         case 0:
             execucao = false
