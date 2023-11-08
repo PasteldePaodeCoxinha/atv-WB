@@ -31,6 +31,9 @@ export default class Cliente {
     public get getRgs(): Array<RG> {
         return this.rgs
     }
+    public set setRgs(rg: RG){
+        this.rgs.push(rg)
+    }
     public get getDataCadastro(): Date {
         return this.dataCadastro
     }
