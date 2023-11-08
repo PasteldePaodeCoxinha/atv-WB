@@ -12,9 +12,10 @@ let empresa = new Empresa()
 let execucao = true
 
 while (execucao) {
-    console.log(`Opções:`);
-    console.log(`1 - Cadastrar cliente`);
-    console.log(`2 - Listar clientes`);
+    let execucao2 = true
+    console.log(`Escolha uma das opções:`);
+    console.log(`1 - Cadastrar Cliente`);
+    console.log(`2 - Listar Clientes`);
     console.log(`3 - Cadastrar produto`);
     console.log(`4 - Listar produtos`);
     console.log(`5 - Cadastrar serviço`);
