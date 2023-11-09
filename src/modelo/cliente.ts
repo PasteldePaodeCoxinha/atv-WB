@@ -25,13 +25,19 @@ export default class Cliente {
         this.produtosConsumidos = []
         this.servicosConsumidos = []
     }
+
+    public set mudaNome(nome: string) {
+        this.nome = nome
+    }
+
     public get getCpf(): CPF {
         return this.cpf
     }
+
     public get getRgs(): Array<RG> {
         return this.rgs
     }
-    public set setRgs(rg: RG){
+    public set setRgs(rg: RG) {
         this.rgs.push(rg)
     }
     public get getDataCadastro(): Date {

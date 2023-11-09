@@ -21,4 +21,15 @@ export default class ListagemClientes extends Listagem {
         });
         console.log(`\n`);
     }
+
+    public getUmCliente(nome: String){
+        let cliente
+        for (let cli of this.clientes) {
+            if (cli.nome == nome) {
+                cliente = cli
+                break
+            }
+        }
+        return cliente
+    }
 }

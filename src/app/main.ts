@@ -58,3 +58,5 @@ while (execucao) {
             console.log(`Operação não entendida :(`)
     }
 }
+
+export default empresa
