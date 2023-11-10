@@ -16,4 +16,15 @@ export default class ListagemServicos extends Listagem {
         });
         console.log(`\n`);
     }
+
+    public getUmServico(nome: String) {
+        let servico
+        for (let ser of this.servicos) {
+            if (ser.nome == nome) {
+                servico = ser
+                break
+            }
+        }
+        return servico
+    }
 }

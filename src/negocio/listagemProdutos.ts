@@ -16,4 +16,15 @@ export default class ListagemProdutos extends Listagem {
         });
         console.log(`\n`);
     }
+
+    public getUmProduto(nome: String) {
+        let produto
+        for (let pro of this.produtos) {
+            if (pro.nome == nome) {
+                produto = pro
+                break
+            }
+        }
+        return produto
+    }
 }
