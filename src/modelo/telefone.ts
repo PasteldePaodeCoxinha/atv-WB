@@ -15,7 +15,7 @@ export default class Telefone {
     }
 
     public get geTelCompleto(): string {
-        return this.ddd + this.numero
+        return `+${this.ddd} ${this.numero}`
     }
 
 }

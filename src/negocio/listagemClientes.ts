@@ -17,12 +17,15 @@ export default class ListagemClientes extends Listagem {
             cliente.getRgs.forEach(rg => {
                 console.log(`RG: ` + rg.getValor)
             });
+            cliente.getTelefones.forEach(tel => {
+                console.log(`Telefone/celular: ` + tel.geTelCompleto)
+            });
             console.log(`--------------------------------------`);
         });
         console.log(`\n`);
     }
 
-    public getUmCliente(nome: String){
+    public getUmCliente(nome: String) {
         let cliente
         for (let cli of this.clientes) {
             if (cli.nome == nome) {
