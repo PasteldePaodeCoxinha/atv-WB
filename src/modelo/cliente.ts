@@ -46,6 +46,9 @@ export default class Cliente {
     public get getTelefones(): Array<Telefone> {
         return this.telefones
     }
+    public set setTel(tel: Telefone) {
+        this.telefones.push(tel)
+    }
     public get getProdutosConsumidos(): Array<Produto> {
         return this.produtosConsumidos
     }

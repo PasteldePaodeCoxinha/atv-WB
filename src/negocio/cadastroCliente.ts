@@ -2,6 +2,7 @@ import Entrada from "../io/entrada";
 import Cliente from "../modelo/cliente";
 import CPF from "../modelo/cpf";
 import RG from "../modelo/rg";
+import Telefone from "../modelo/telefone";
 import Cadastro from "./cadastro";
 
 export default class CadastroCliente extends Cadastro {
@@ -38,6 +39,13 @@ export default class CadastroCliente extends Cadastro {
             partesDataRg = []
             let rg = new RG(valorRg, dataEmissaoRg);
             cliente.setRgs = rg
+        }
+        let qtdTel = this.entrada.receberNumero(`Digite quantos telefones/celulares você possui: `);
+        for (let i = 0; i < qtdTel; i++) {
+            let dddTel = this.entrada.receberTexto(`Por favor informe o DDD do seu telefone/celular: `);
+            let numTel = this.entrada.receberTexto(`Por favor informe o número do seu telefone/celular: `);
+            let telefone = new Telefone(dddTel, numTel);
+            cliente.setTel = telefone
         }
         this.clientes.push(cliente)
         console.log(`\nCLIENTE CADASTRADO :)\n`);

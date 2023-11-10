@@ -13,4 +13,9 @@ export default class Telefone {
     public get getNumero(): string {
         return this.numero
     }
+
+    public get geTelCompleto(): string {
+        return this.ddd + this.numero
+    }
+
 }
