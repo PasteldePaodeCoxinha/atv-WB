@@ -40,18 +40,32 @@ export default class Cliente {
     public set setRgs(rg: RG) {
         this.rgs.push(rg)
     }
+
     public get getDataCadastro(): Date {
         return this.dataCadastro
     }
+
     public get getTelefones(): Array<Telefone> {
         return this.telefones
     }
     public set setTel(tel: Telefone) {
         this.telefones.push(tel)
     }
+    public set delTel(tel: String) {
+        this.telefones = this.telefones.filter(telefone => telefone.getNumero !== tel)
+    }
+    public ediTel(tel: String, NoTel: Telefone) {
+        let telDes = this.telefones.find(e => e.getNumero == tel)
+        if (telDes != undefined) {
+            this.telefones[this.telefones.indexOf(telDes)] = NoTel
+        }
+
+    }
+
     public get getProdutosConsumidos(): Array<Produto> {
         return this.produtosConsumidos
     }
+
     public get getServicosConsumidos(): Array<Servico> {
         return this.servicosConsumidos
     }
