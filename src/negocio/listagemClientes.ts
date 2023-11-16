@@ -35,4 +35,5 @@ export default class ListagemClientes extends Listagem {
         }
         return cliente
     }
+
 }

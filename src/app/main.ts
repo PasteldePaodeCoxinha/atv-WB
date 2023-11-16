@@ -6,6 +6,7 @@ import AtualizaServico from "../negocio/atualizaServico";
 import CadastroCliente from "../negocio/cadastroCliente";
 import CadastroProduto from "../negocio/cadastroProduto";
 import CadastroServico from "../negocio/cadastroServico";
+import DeletaCliente from "../negocio/deletaCliente";
 import ListagemClientes from "../negocio/listagemClientes";
 import ListagemProdutos from "../negocio/listagemProdutos";
 import ListagemServicos from "../negocio/listagemServicos";
@@ -26,6 +27,9 @@ while (execucao) {
     console.log(`7 - Atualizar Cliente`);
     console.log(`8 - Atualizar Produto`);
     console.log(`9 - Atualizar Serviço`);
+    console.log(`10 - Deletar Cliente`);
+    console.log(`11 - Deletar Produto`);
+    console.log(`12 - Deletar Serviço`);
     console.log(`0 - Sair`);
 
     let entrada = new Entrada()
@@ -67,6 +71,10 @@ while (execucao) {
         case 9:
             let atualizarServico = new AtualizaServico(empresa.getServicos)
             atualizarServico.atualizar()
+            break;
+        case 10:
+            let deletarCliente = new DeletaCliente(empresa.getClientes)
+            empresa.setClientes = deletarCliente.deletar()
             break;
         case 0:
             execucao = false
