@@ -6,6 +6,7 @@ import AtualizaServico from "../negocio/atualizaServico";
 import CadastroCliente from "../negocio/cadastroCliente";
 import CadastroProduto from "../negocio/cadastroProduto";
 import CadastroServico from "../negocio/cadastroServico";
+import clienteConsumiu from "../negocio/clienteConsumiu";
 import DeletaCliente from "../negocio/deletaCliente";
 import DeletaProduto from "../negocio/deletaProduto";
 import DeletaServico from "../negocio/deletaServico";
@@ -32,6 +33,7 @@ while (execucao) {
     console.log(`10 - Deletar Cliente`);
     console.log(`11 - Deletar Produto`);
     console.log(`12 - Deletar Serviço`);
+    console.log(`13 - Registar consumo`);
     console.log(`0 - Sair`);
 
     let entrada = new Entrada()
@@ -88,6 +90,19 @@ while (execucao) {
             let deletarServico = new DeletaServico(empresa.getServicos)
             empresa.setServicos = deletarServico.deletar()
             console.log(`Serviço deletado`);
+            break;
+        case 13:
+            let nomeReq = new Entrada()
+            let clienteNome = nomeReq.receberTexto(`Digite o nome do cliente desejado: `)
+            let todosCliente = new ListagemClientes(empresa.getClientes)
+            let cliente = todosCliente.getUmCliente(clienteNome)
+            let registrarConsumo = new clienteConsumiu(cliente, empresa.getProdutos, empresa.getServicos)
+            let contReq = new Entrada()
+            let cont = "s"
+            while (cont == "s") {
+                registrarConsumo.consumir()
+                cont = contReq.receberTexto(`Continuar: `)
+            }
             break;
         case 0:
             execucao = false

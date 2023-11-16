@@ -59,14 +59,19 @@ export default class Cliente {
         if (telDes != undefined) {
             this.telefones[this.telefones.indexOf(telDes)] = NoTel
         }
-
     }
 
     public get getProdutosConsumidos(): Array<Produto> {
         return this.produtosConsumidos
     }
+    public set setProdutosConsumidos(pro: Produto) {
+        this.produtosConsumidos.push(pro)
+    }
 
     public get getServicosConsumidos(): Array<Servico> {
         return this.servicosConsumidos
+    }
+    public set setServicosConsumidos(ser: Servico) {
+        this.servicosConsumidos.push(ser)
     }
 }

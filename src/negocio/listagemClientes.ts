@@ -20,6 +20,13 @@ export default class ListagemClientes extends Listagem {
             cliente.getTelefones.forEach(tel => {
                 console.log(`Telefone/celular: ` + tel.geTelCompleto)
             });
+            cliente.getProdutosConsumidos.forEach(pro => {
+                console.log(`${pro.nome}, `);
+            });
+            cliente.getServicosConsumidos.forEach(ser => {
+                console.log(`${ser.nome}, `);
+            });
+
             console.log(`--------------------------------------`);
         });
         console.log(`\n`);
@@ -35,5 +42,4 @@ export default class ListagemClientes extends Listagem {
         }
         return cliente
     }
-
 }
