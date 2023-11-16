@@ -22,7 +22,15 @@ export default class Empresa {
     public get getProdutos() {
         return this.produtos
     }
+    public set setProdutos(produtos: Array<Produto>) {
+        this.produtos = produtos;
+    }
+
     public get getServicos() {
         return this.servicos
     }
+    public set setServicos(servicos: Array<Servico>) {
+        this.servicos = servicos;
+    }
+    
 }

@@ -7,6 +7,7 @@ import CadastroCliente from "../negocio/cadastroCliente";
 import CadastroProduto from "../negocio/cadastroProduto";
 import CadastroServico from "../negocio/cadastroServico";
 import DeletaCliente from "../negocio/deletaCliente";
+import DeletaProduto from "../negocio/deletaProduto";
 import ListagemClientes from "../negocio/listagemClientes";
 import ListagemProdutos from "../negocio/listagemProdutos";
 import ListagemServicos from "../negocio/listagemServicos";
@@ -76,6 +77,14 @@ while (execucao) {
             let deletarCliente = new DeletaCliente(empresa.getClientes)
             empresa.setClientes = deletarCliente.deletar()
             break;
+        case 11:
+            let deletarProduto = new DeletaProduto(empresa.getProdutos)
+            empresa.setProdutos = deletarProduto.deletar()
+            break;
+        // case 12:
+        //     let deletarServico = new DeletaServico(empresa.getServicos)
+        //     empresa.setServicos = deletarServico.deletar()
+        //     break;
         case 0:
             execucao = false
             console.log(`Até mais`)
