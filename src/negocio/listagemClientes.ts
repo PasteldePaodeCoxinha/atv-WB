@@ -10,6 +10,7 @@ export default class ListagemClientes extends Listagem {
     public listar(): void {
         console.log(`\nLista de todos os clientes:`);
         this.clientes.forEach(cliente => {
+            console.log(`------------------------------------------------------`);
             console.log(`Nome: ` + cliente.nome);
             console.log(`Nome social: ` + cliente.nomeSocial);
             console.log(`Genêro: ` + cliente.genero);
@@ -29,15 +30,16 @@ export default class ListagemClientes extends Listagem {
                 console.log(`${ser.nome}`);
             });
             console.log(`\nTotal gasto: `);
-            try {
-                console.log(`R$${cliente.getProdutosConsumidos.map(e => e.preco).reduce(function (x, y) { return x + y })
-                    + cliente.getServicosConsumidos.map(e => e.preco).reduce(function (x, y) { return x + y })}`);
-            } catch (e) {
-                console.log(`R$00.00`);
 
-            }
+            console.log(`R$${((cliente.getProdutosConsumidos.length > 0) ?
+                cliente.getProdutosConsumidos.map(e => e.preco).reduce(function (x, y) { return x + y }) :
+                0)
+                +
+                ((cliente.getServicosConsumidos.length > 0) ?
+                    cliente.getServicosConsumidos.map(e => e.preco).reduce(function (x, y) { return x + y }) :
+                    0)}`);
 
-            console.log(`--------------------------------------`);
+            console.log(`------------------------------------------------------`);
         });
         console.log(`\n`);
     }
@@ -51,5 +53,13 @@ export default class ListagemClientes extends Listagem {
             }
         }
         return cliente
+    }
+
+    public listaProQTD() {
+        this.clientes.sort(function (a, b) { return b.getProdutosConsumidos.length - a.getProdutosConsumidos.length }).forEach((c) => {
+            console.log(`Nome: ${c.nome}`);
+            console.log(`Quantidade de produtos consumidos: ${c.getProdutosConsumidos.length}`);
+            console.log(`------------------------------------------------------`);
+        })
     }
 }

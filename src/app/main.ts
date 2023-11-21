@@ -56,6 +56,7 @@ const Listagens = (p) => {
     while (exe) {
         console.log(`Opções de listagens:`);
         console.log(`1 - Listar todos`);
+        console.log(`2 - Listar por ordem de quantidade de produtos consumidos`);
         console.log(`0 - Sair`);
 
         let ent = new Entrada()
@@ -64,6 +65,10 @@ const Listagens = (p) => {
         switch (op) {
             case 1:
                 ListarTodos(p)
+                break
+            case 2:
+                let listaCliente = new ListagemClientes(empresa.getClientes)
+                listaCliente.listaProQTD()
                 break
             case 0:
                 exe = false
@@ -105,14 +110,14 @@ const opcoes = (p: number) => {
                 Deletar(p)
                 break
             case 5:
-                let nomeReq = new Entrada()
-                let clienteNome = nomeReq.receberTexto(`Digite o nome do cliente desejado: `)
-                let todosCliente = new ListagemClientes(empresa.getClientes)
-                let cliente = todosCliente.getUmCliente(clienteNome)
-                let registrarConsumo = new clienteConsumiu(cliente, empresa.getProdutos, empresa.getServicos)
-                let contReq = new Entrada()
                 let cont = "s"
                 while (cont.toUpperCase() == "S") {
+                    let nomeReq = new Entrada()
+                    let clienteNome = nomeReq.receberTexto(`Digite o nome do cliente desejado: `)
+                    let todosCliente = new ListagemClientes(empresa.getClientes)
+                    let cliente = todosCliente.getUmCliente(clienteNome)
+                    let registrarConsumo = new clienteConsumiu(cliente, empresa.getProdutos, empresa.getServicos)
+                    let contReq = new Entrada()
                     registrarConsumo.consumir()
                     cont = contReq.receberTexto(`Você deseja registrar as compras de outro cliente (S ou N): `)
                 }
