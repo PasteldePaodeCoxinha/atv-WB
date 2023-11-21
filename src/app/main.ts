@@ -114,7 +114,7 @@ const opcoes = (p: number) => {
                 let cont = "s"
                 while (cont.toUpperCase() == "S") {
                     registrarConsumo.consumir()
-                    cont = contReq.receberTexto(`Continuar: `)
+                    cont = contReq.receberTexto(`Você deseja registrar as compras de outro cliente (S ou N): `)
                 }
                 break;
             case 0:

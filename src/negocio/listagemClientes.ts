@@ -20,12 +20,22 @@ export default class ListagemClientes extends Listagem {
             cliente.getTelefones.forEach(tel => {
                 console.log(`Telefone/celular: ` + tel.geTelCompleto)
             });
+            console.log(`-----------PRODUTOS CONSUMIDOS-----------`);
             cliente.getProdutosConsumidos.forEach(pro => {
-                console.log(`${pro.nome}, `);
+                console.log(`${pro.nome}`);
             });
+            console.log(`-----------SERVIÇOS CONSUMIDOS-----------`);
             cliente.getServicosConsumidos.forEach(ser => {
-                console.log(`${ser.nome}, `);
+                console.log(`${ser.nome}`);
             });
+            console.log(`\nTotal gasto: `);
+            try {
+                console.log(`R$${cliente.getProdutosConsumidos.map(e => e.preco).reduce(function (x, y) { return x + y })
+                    + cliente.getServicosConsumidos.map(e => e.preco).reduce(function (x, y) { return x + y })}`);
+            } catch (e) {
+                console.log(`R$00.00`);
+
+            }
 
             console.log(`--------------------------------------`);
         });
