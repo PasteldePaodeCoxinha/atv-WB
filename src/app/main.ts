@@ -56,7 +56,8 @@ const Listagens = (p) => {
     while (exe) {
         console.log(`Opções de listagens:`);
         console.log(`1 - Listar todos`);
-        console.log(`2 - Listar por ordem de quantidade de produtos consumidos`);
+        console.log(`2 - Listar por quantidade de produtos`);
+        console.log(`3 - Listar por quantidade de produtos`);
         console.log(`0 - Sair`);
 
         let ent = new Entrada()
@@ -69,6 +70,10 @@ const Listagens = (p) => {
             case 2:
                 let listaCliente = new ListagemClientes(empresa.getClientes)
                 listaCliente.listaProQTD()
+                break
+            case 3:
+                let listaCliente2 = new ListagemClientes(empresa.getClientes)
+                listaCliente2.listaSerQTD()
                 break
             case 0:
                 exe = false

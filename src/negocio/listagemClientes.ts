@@ -62,4 +62,12 @@ export default class ListagemClientes extends Listagem {
             console.log(`------------------------------------------------------`);
         })
     }
+
+    public listaSerQTD() {
+        this.clientes.sort(function (a, b) { return b.getServicosConsumidos.length - a.getServicosConsumidos.length }).forEach((c) => {
+            console.log(`Nome: ${c.nome}`);
+            console.log(`Quantidade de produtos consumidos: ${c.getServicosConsumidos.length}`);
+            console.log(`------------------------------------------------------`);
+        })
+    }
 }
