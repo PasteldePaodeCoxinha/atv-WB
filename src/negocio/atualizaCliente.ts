@@ -20,19 +20,25 @@ export default class AtualizaCliente extends Atualiza {
         let cliente = Listacliente.getUmCliente(nome)
 
         let perNome = this.entrada.receberTexto(`Você deseja alterar o nome do cliente (S ou N): `)
-        if (perNome == "S") {
+        if (perNome.toUpperCase() == "S") {
             let NoNome = this.entrada.receberTexto(`Digite o novo nome do cliente: `)
             cliente.nome = NoNome
         }
 
         let perNomeSo = this.entrada.receberTexto(`Você deseja alterar o nome social do cliente (S ou N): `)
-        if (perNomeSo == "S") {
+        if (perNomeSo.toUpperCase() == "S") {
             let NoNomeSo = this.entrada.receberTexto(`Digite o novo nome social do cliente: `)
             cliente.nomeSocial = NoNomeSo
         }
 
+        let perGen = this.entrada.receberTexto(`Você deseja alterar o genêro do cliente (S ou N): `)
+        if (perGen.toUpperCase() == "S") {
+            let Gen = this.entrada.receberTexto(`Digite o genêro: `)
+            cliente.genero = Gen
+        }
+
         let perRG = this.entrada.receberTexto(`Você deseja adicionar mais um RG (S ou N): `)
-        if (perRG == "S") {
+        if (perRG.toUpperCase() == "S") {
             let qtdRg = this.entrada.receberNumero(`Digite quantos RG's você quer adicionar: `);
             for (let i = 0; i < qtdRg; i++) {
                 let valorRg = this.entrada.receberTexto(`Por favor informe o número do RG: `);
@@ -49,7 +55,7 @@ export default class AtualizaCliente extends Atualiza {
         }
 
         let perTel = this.entrada.receberTexto(`Você deseja deletar um telefone (S ou N): `)
-        if (perTel == "S") {
+        if (perTel.toUpperCase() == "S") {
             let telDes = this.entrada.receberTexto(`Digite o número do telefone/celular desejado: `)
 
             cliente.delTel = telDes
@@ -60,7 +66,7 @@ export default class AtualizaCliente extends Atualiza {
         perTel = ``
 
         perTel = this.entrada.receberTexto(`Você deseja editar um telefone/celular (S ou N): `)
-        if (perTel == "S") {
+        if (perTel.toUpperCase() == "S") {
             let telDes = this.entrada.receberTexto(`Digite o número do telefone/celular desejado: `)
 
             let NodddTel = this.entrada.receberTexto(`Por favor informe o novo DDD do seu telefone/celular: `);
@@ -73,7 +79,7 @@ export default class AtualizaCliente extends Atualiza {
         perTel = ``
 
         perTel = this.entrada.receberTexto(`Você deseja adicionar um telefone (S ou N): `)
-        if (perTel == "S") {
+        if (perTel.toUpperCase() == "S") {
             let qtdTel = this.entrada.receberNumero(`Digite quantos telefones/celulares você possui: `);
             for (let i = 0; i < qtdTel; i++) {
                 let dddTel = this.entrada.receberTexto(`Por favor informe o DDD do seu novo telefone/celular: `);
