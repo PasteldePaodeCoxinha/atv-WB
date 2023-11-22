@@ -13,6 +13,11 @@ export default class DeletaCliente extends Deleta {
 
     public deletar() {
         let nome = this.entrada.receberTexto(`Digite o nome do cliente: `)
+        let cliente = this.clientes.filter((e) => e.nome == nome)
+        while (cliente.length < 0) {
+            nome = this.entrada.receberTexto(`Esse cliente não existe, digite de novo: `)
+            cliente = this.clientes.filter((e) => e.nome == nome)
+        }
         return this.clientes.filter((e) => e.nome != nome)
     }
 }
