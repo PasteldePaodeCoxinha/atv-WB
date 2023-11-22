@@ -18,26 +18,42 @@ export default class AtualizaCliente extends Atualiza {
 
         let Listacliente = new ListagemClientes(this.clientes)
         let cliente = Listacliente.getUmCliente(nome)
+        while (cliente != Cliente) {
+            nome = this.entrada.receberTexto(`Esse cliente não existe, digite o nome de novo: `)
+            cliente = Listacliente.getUmCliente(nome)
+        }
 
         let perNome = this.entrada.receberTexto(`Você deseja alterar o nome do cliente (S ou N): `)
+        while (perNome.toUpperCase() != "S" || perNome.toUpperCase() != "N") {
+            perNome = this.entrada.receberTexto(`Operação não entendida, digite de novo: `)
+        }
         if (perNome.toUpperCase() == "S") {
             let NoNome = this.entrada.receberTexto(`Digite o novo nome do cliente: `)
             cliente.nome = NoNome
         }
 
         let perNomeSo = this.entrada.receberTexto(`Você deseja alterar o nome social do cliente (S ou N): `)
+        while (perNomeSo.toUpperCase() != "S" || perNomeSo.toUpperCase() != "N") {
+            perNomeSo = this.entrada.receberTexto(`Operação não entendida, digite de novo: `)
+        }
         if (perNomeSo.toUpperCase() == "S") {
             let NoNomeSo = this.entrada.receberTexto(`Digite o novo nome social do cliente: `)
             cliente.nomeSocial = NoNomeSo
         }
 
         let perGen = this.entrada.receberTexto(`Você deseja alterar o genêro do cliente (S ou N): `)
+        while (perGen.toUpperCase() != "S" || perGen.toUpperCase() != "N") {
+            perGen = this.entrada.receberTexto(`Operação não entendida, digite de novo: `)
+        }
         if (perGen.toUpperCase() == "S") {
             let Gen = this.entrada.receberTexto(`Digite o genêro: `)
             cliente.genero = Gen
         }
 
         let perRG = this.entrada.receberTexto(`Você deseja adicionar mais um RG (S ou N): `)
+        while (perRG.toUpperCase() != "S" || perRG.toUpperCase() != "N") {
+            perRG = this.entrada.receberTexto(`Operação não entendida, digite de novo: `)
+        }
         if (perRG.toUpperCase() == "S") {
             let qtdRg = this.entrada.receberNumero(`Digite quantos RG's você quer adicionar: `);
             for (let i = 0; i < qtdRg; i++) {
@@ -55,6 +71,9 @@ export default class AtualizaCliente extends Atualiza {
         }
 
         let perTel = this.entrada.receberTexto(`Você deseja deletar um telefone (S ou N): `)
+        while (perTel.toUpperCase() != "S" || perTel.toUpperCase() != "N") {
+            perTel = this.entrada.receberTexto(`Operação não entendida, digite de novo: `)
+        }
         if (perTel.toUpperCase() == "S") {
             let telDes = this.entrada.receberTexto(`Digite o número do telefone/celular desejado: `)
 
@@ -66,6 +85,9 @@ export default class AtualizaCliente extends Atualiza {
         perTel = ``
 
         perTel = this.entrada.receberTexto(`Você deseja editar um telefone/celular (S ou N): `)
+        while (perTel.toUpperCase() != "S" || perTel.toUpperCase() != "N") {
+            perTel = this.entrada.receberTexto(`Operação não entendida, digite de novo: `)
+        }
         if (perTel.toUpperCase() == "S") {
             let telDes = this.entrada.receberTexto(`Digite o número do telefone/celular desejado: `)
 
@@ -79,6 +101,9 @@ export default class AtualizaCliente extends Atualiza {
         perTel = ``
 
         perTel = this.entrada.receberTexto(`Você deseja adicionar um telefone (S ou N): `)
+        while (perTel.toUpperCase() != "S" || perTel.toUpperCase() != "N") {
+            perTel = this.entrada.receberTexto(`Operação não entendida, digite de novo: `)
+        }
         if (perTel.toUpperCase() == "S") {
             let qtdTel = this.entrada.receberNumero(`Digite quantos telefones/celulares você possui: `);
             for (let i = 0; i < qtdTel; i++) {
