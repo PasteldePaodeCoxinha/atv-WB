@@ -20,7 +20,7 @@ export default class AtualizaProduto extends Atualiza {
         }
 
         let perNome = this.entrada.receberTexto(`Você deseja alterar o nome do produto (S ou N): `)
-        while (perNome.toUpperCase() != "S" || perNome.toUpperCase() != "N") {
+        while (!"SN".includes(perNome.toUpperCase())) {
             perNome = this.entrada.receberTexto(`Operação não entendida, digite de novo: `)
         }
         if (perNome.toUpperCase() == "S") {
@@ -29,7 +29,7 @@ export default class AtualizaProduto extends Atualiza {
         }
 
         let perPreco = this.entrada.receberTexto(`Você deseja alterar o preço do produto (S ou N): `)
-        while (perPreco.toUpperCase() != "S" || perPreco.toUpperCase() != "N") {
+        while (!"SN".includes(perPreco.toUpperCase())) {
             perPreco = this.entrada.receberTexto(`Operação não entendida, digite de novo: `)
         }
         if (perPreco.toUpperCase() == "S") {

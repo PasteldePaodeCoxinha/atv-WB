@@ -57,7 +57,8 @@ const Listagens = (p) => {
         console.log(`Opções de listagens:`);
         console.log(`1 - Listar todos`);
         console.log(`2 - Listar por quantidade de produtos`);
-        console.log(`3 - Listar por quantidade de produtos`);
+        console.log(`3 - Listar por quantidade de serviços`);
+        console.log(`4 - Listar por genêro`);
         console.log(`0 - Sair`);
 
         let ent = new Entrada()
@@ -74,6 +75,14 @@ const Listagens = (p) => {
             case 3:
                 let listaCliente2 = new ListagemClientes(empresa.getClientes)
                 listaCliente2.listaSerQTD()
+                break
+            case 4:
+                let gen = ent.receberTexto(`Digite o genêro que deseja (M ou F): `)
+                while (!"MF".includes(gen.toUpperCase())) {
+                    gen = ent.receberTexto(`Operação não entendida, digite de novo: `)
+                }
+                let listaGen = new ListagemClientes(empresa.getClientes.filter((e) => e.genero == gen.toUpperCase()))
+                listaGen.listar()
                 break
             case 0:
                 exe = false

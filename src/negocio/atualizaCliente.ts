@@ -24,7 +24,7 @@ export default class AtualizaCliente extends Atualiza {
         }
 
         let perNome = this.entrada.receberTexto(`Você deseja alterar o nome do cliente (S ou N): `)
-        while (perNome.toUpperCase() != "S" || perNome.toUpperCase() != "N") {
+        while (!"SN".includes(perNome.toUpperCase())) {
             perNome = this.entrada.receberTexto(`Operação não entendida, digite de novo: `)
         }
         if (perNome.toUpperCase() == "S") {
@@ -33,7 +33,7 @@ export default class AtualizaCliente extends Atualiza {
         }
 
         let perNomeSo = this.entrada.receberTexto(`Você deseja alterar o nome social do cliente (S ou N): `)
-        while (perNomeSo.toUpperCase() != "S" || perNomeSo.toUpperCase() != "N") {
+        while (!"SN".includes(perNomeSo.toUpperCase())) {
             perNomeSo = this.entrada.receberTexto(`Operação não entendida, digite de novo: `)
         }
         if (perNomeSo.toUpperCase() == "S") {
@@ -42,7 +42,7 @@ export default class AtualizaCliente extends Atualiza {
         }
 
         let perGen = this.entrada.receberTexto(`Você deseja alterar o genêro do cliente (S ou N): `)
-        while (perGen.toUpperCase() != "S" || perGen.toUpperCase() != "N") {
+        while (!"SN".includes(perGen.toUpperCase())) {
             perGen = this.entrada.receberTexto(`Operação não entendida, digite de novo: `)
         }
         if (perGen.toUpperCase() == "S") {
@@ -51,7 +51,7 @@ export default class AtualizaCliente extends Atualiza {
         }
 
         let perRG = this.entrada.receberTexto(`Você deseja adicionar mais um RG (S ou N): `)
-        while (perRG.toUpperCase() != "S" || perRG.toUpperCase() != "N") {
+        while (!"SN".includes(perRG.toUpperCase())) {
             perRG = this.entrada.receberTexto(`Operação não entendida, digite de novo: `)
         }
         if (perRG.toUpperCase() == "S") {
@@ -71,7 +71,7 @@ export default class AtualizaCliente extends Atualiza {
         }
 
         let perTel = this.entrada.receberTexto(`Você deseja deletar um telefone (S ou N): `)
-        while (perTel.toUpperCase() != "S" || perTel.toUpperCase() != "N") {
+        while (!"SN".includes(perTel.toUpperCase())) {
             perTel = this.entrada.receberTexto(`Operação não entendida, digite de novo: `)
         }
         if (perTel.toUpperCase() == "S") {
@@ -85,7 +85,7 @@ export default class AtualizaCliente extends Atualiza {
         perTel = ``
 
         perTel = this.entrada.receberTexto(`Você deseja editar um telefone/celular (S ou N): `)
-        while (perTel.toUpperCase() != "S" || perTel.toUpperCase() != "N") {
+        while (!"SN".includes(perTel.toUpperCase())) {
             perTel = this.entrada.receberTexto(`Operação não entendida, digite de novo: `)
         }
         if (perTel.toUpperCase() == "S") {
@@ -101,7 +101,7 @@ export default class AtualizaCliente extends Atualiza {
         perTel = ``
 
         perTel = this.entrada.receberTexto(`Você deseja adicionar um telefone (S ou N): `)
-        while (perTel.toUpperCase() != "S" || perTel.toUpperCase() != "N") {
+        while (!"SN".includes(perTel.toUpperCase())) {
             perTel = this.entrada.receberTexto(`Operação não entendida, digite de novo: `)
         }
         if (perTel.toUpperCase() == "S") {

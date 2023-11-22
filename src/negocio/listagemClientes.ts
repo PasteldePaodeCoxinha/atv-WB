@@ -58,6 +58,7 @@ export default class ListagemClientes extends Listagem {
     public listaProQTD() {
         this.clientes.sort(function (a, b) { return b.getProdutosConsumidos.length - a.getProdutosConsumidos.length }).forEach((c) => {
             console.log(`Nome: ${c.nome}`);
+            console.log(`Genêro: ${c.genero}`);
             console.log(`Quantidade de produtos consumidos: ${c.getProdutosConsumidos.length}`);
             console.log(`------------------------------------------------------`);
         })
@@ -66,7 +67,8 @@ export default class ListagemClientes extends Listagem {
     public listaSerQTD() {
         this.clientes.sort(function (a, b) { return b.getServicosConsumidos.length - a.getServicosConsumidos.length }).forEach((c) => {
             console.log(`Nome: ${c.nome}`);
-            console.log(`Quantidade de produtos consumidos: ${c.getServicosConsumidos.length}`);
+            console.log(`Genêro: ${c.genero}`);
+            console.log(`Quantidade de serviços consumidos: ${c.getServicosConsumidos.length}`);
             console.log(`------------------------------------------------------`);
         })
     }
