@@ -27,4 +27,8 @@ export default class ListagemProdutos extends Listagem {
         }
         return produto
     }
+
+    public proMaisConsu(){
+        let lisPro = this.produtos.splice(0)
+    }
 }

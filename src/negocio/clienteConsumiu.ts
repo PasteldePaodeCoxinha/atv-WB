@@ -31,13 +31,23 @@ export default class clienteConsumiu {
                 let produtoNome = this.entrada.receberTexto(`Digite o nome do produto: `)
                 let todosProdutos = new ListagemProdutos(this.listaProduto)
                 let produto = todosProdutos.getUmProduto(produtoNome)
+                while (produto == undefined) {
+                    produtoNome = this.entrada.receberTexto(`Esse produto não existe, digite de novo: `)
+                    produto = todosProdutos.getUmProduto(produtoNome)
+                }
                 this.cliente.setProdutosConsumidos = produto
+                produto.compradoMaisUm()
             }
             else if (res == 2) {
                 let servicoNome = this.entrada.receberTexto(`Digite o nome do serviço: `)
                 let todosServicos = new ListagemServicos(this.listaServico)
                 let servico = todosServicos.getUmServico(servicoNome)
+                while (servico == undefined) {
+                    servicoNome = this.entrada.receberTexto(`Esse serviço não existe, digite de novo: `)
+                    servico = todosServicos.getUmServico(servicoNome)
+                }
                 this.cliente.setServicosConsumidos = servico
+                servico.compradoMaisUm()
             }
             else {
                 console.log(`Operação náo entendida`);

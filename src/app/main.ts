@@ -56,9 +56,11 @@ const Listagens = (p) => {
     while (exe) {
         console.log(`Opções de listagens:`);
         console.log(`1 - Listar todos`);
-        console.log(`2 - Listar por quantidade de produtos`);
-        console.log(`3 - Listar por quantidade de serviços`);
+        console.log(`2 - Listar 10 por quantidade de produtos`);
+        console.log(`3 - Listar 10 por quantidade de serviços`);
         console.log(`4 - Listar por genêro`);
+        console.log(`5 - Listar os 5 que mais gastaram`);
+
         console.log(`0 - Sair`);
 
         let ent = new Entrada()
@@ -69,20 +71,42 @@ const Listagens = (p) => {
                 ListarTodos(p)
                 break
             case 2:
+                console.log(`Ver os 10 que mais consumiram (A)`);
+                console.log(`Ver os 10 que menos consumiram (B)`);
+                let revPro = ent.receberTexto(`R: `)
+                while (!"AB".includes(revPro.toUpperCase())) {
+                    console.log(`Operação não entendida.`);
+                    console.log(`Ver os 10 que mais consumiram (A)`);
+                    console.log(`Ver os 10 que menos consumiram (B)`);
+                    revPro = ent.receberTexto(`R: `)
+                }
                 let listaCliente = new ListagemClientes(empresa.getClientes)
-                listaCliente.listaProQTD()
+                listaCliente.listaProQTD((revPro == "A") ? false : true)
                 break
             case 3:
+                console.log(`Ver os 10 que mais consumiram (A)`);
+                console.log(`Ver os 10 que menos consumiram (B)`);
+                let revSer = ent.receberTexto(`R: `)
+                while (!"AB".includes(revSer.toUpperCase())) {
+                    console.log(`Operação não entendida.`);
+                    console.log(`Ver os 10 que mais consumiram (A)`);
+                    console.log(`Ver os 10 que menos consumiram (B)`);
+                    revSer = ent.receberTexto(`R: `)
+                }
                 let listaCliente2 = new ListagemClientes(empresa.getClientes)
-                listaCliente2.listaSerQTD()
+                listaCliente2.listaSerQTD((revSer == "A") ? false : true)
                 break
             case 4:
-                let gen = ent.receberTexto(`Digite o genêro que deseja (M ou F): `)
-                while (!"MF".includes(gen.toUpperCase())) {
-                    gen = ent.receberTexto(`Operação não entendida, digite de novo: `)
+                let gen = ent.receberTexto(`Digite o genêro que deseja (M ou F): `).toUpperCase()
+                while (!"MF".includes(gen)) {
+                    gen = ent.receberTexto(`Operação não entendida, digite de novo (M ou F): `)
                 }
-                let listaGen = new ListagemClientes(empresa.getClientes.filter((e) => e.genero == gen.toUpperCase()))
+                let listaGen = new ListagemClientes(empresa.getClientes.filter((e) => e.genero == gen))
                 listaGen.listar()
+                break
+            case 5:
+                let listaGas = new ListagemClientes(empresa.getClientes)
+                listaGas.listaGasto()
                 break
             case 0:
                 exe = false
@@ -124,16 +148,20 @@ const opcoes = (p: number) => {
                 Deletar(p)
                 break
             case 5:
-                let cont = "s"
-                while (cont.toUpperCase() == "S") {
+                let cont = "S"
+                while (cont == "S") {
                     let nomeReq = new Entrada()
                     let clienteNome = nomeReq.receberTexto(`Digite o nome do cliente desejado: `)
                     let todosCliente = new ListagemClientes(empresa.getClientes)
                     let cliente = todosCliente.getUmCliente(clienteNome)
+                    while (cliente == undefined) {
+                        clienteNome = nomeReq.receberTexto(`Esse cliente não existe, digite de novo: `)
+                        cliente = todosCliente.getUmCliente(clienteNome)
+                    }
                     let registrarConsumo = new clienteConsumiu(cliente, empresa.getProdutos, empresa.getServicos)
                     let contReq = new Entrada()
                     registrarConsumo.consumir()
-                    cont = contReq.receberTexto(`Você deseja registrar as compras de outro cliente (S ou N): `)
+                    cont = contReq.receberTexto(`Você deseja registrar as compras de outro cliente (S ou N): `).toUpperCase()
                 }
                 break;
             case 0:

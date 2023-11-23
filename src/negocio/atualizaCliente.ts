@@ -18,7 +18,7 @@ export default class AtualizaCliente extends Atualiza {
 
         let Listacliente = new ListagemClientes(this.clientes)
         let cliente = Listacliente.getUmCliente(nome)
-        while (cliente != Cliente) {
+        while (cliente == undefined) {
             nome = this.entrada.receberTexto(`Esse cliente não existe, digite o nome de novo: `)
             cliente = Listacliente.getUmCliente(nome)
         }

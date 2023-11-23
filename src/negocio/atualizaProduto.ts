@@ -15,7 +15,7 @@ export default class AtualizaProduto extends Atualiza {
         let nome = this.entrada.receberTexto(`Digite o nome de um produto: `)
         let Listaproduto = new ListagemProdutos(this.produtos)
         let produto = Listaproduto.getUmProduto(nome)
-        while (produto != Produto) {
+        while (produto == undefined) {
             nome = this.entrada.receberTexto(`Esse produto não existe, digite o nome de novo: `)
         }
 

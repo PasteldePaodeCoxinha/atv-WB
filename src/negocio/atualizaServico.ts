@@ -15,7 +15,7 @@ export default class AtualizaServico extends Atualiza {
         let nome = this.entrada.receberTexto(`Digite o nome de um serviço: `)
         let Listaservicos = new ListagemServicos(this.servicos)
         let servico = Listaservicos.getUmServico(nome)
-        while (servico != Servico) {
+        while (servico == undefined) {
             nome = this.entrada.receberTexto(`Esse serviço não existe, digite o nome de novo: `)
         }
 
