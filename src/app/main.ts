@@ -51,16 +51,27 @@ const Deletar = (op: number) => {
     empresa[possi[op]] = deletar[op].deletar()
 }
 
-const Listagens = (p) => {
+const ListarMaisComprados = (op) => {
+    let listar = [new ListagemProdutos(empresa.getProdutos),
+    new ListagemServicos(empresa.getServicos)]
+    listar[op].maisConsu()
+}
+
+const Listagens = (p: number) => {
     let exe = true
     while (exe) {
         console.log(`Opções de listagens:`);
         console.log(`1 - Listar todos`);
-        console.log(`2 - Listar 10 por quantidade de produtos`);
-        console.log(`3 - Listar 10 por quantidade de serviços`);
-        console.log(`4 - Listar por genêro`);
-        console.log(`5 - Listar os 5 que mais gastaram`);
-
+        if (p == 0) {
+            console.log(`2 - Listar 10 por quantidade de produtos`);
+            console.log(`3 - Listar 10 por quantidade de serviços`);
+            console.log(`4 - Listar por genêro`);
+            console.log(`5 - Listar os 5 que mais gastaram`);
+        } else {
+            let possi = ["produtos", "serviços"]
+            console.log(`2 - Listar por ${possi[p - 1]} mais comprados`);
+            console.log(`3 - Listar por ${possi[p - 1]} mais comprados por genêro`);
+        }
         console.log(`0 - Sair`);
 
         let ent = new Entrada()
@@ -71,43 +82,62 @@ const Listagens = (p) => {
                 ListarTodos(p)
                 break
             case 2:
-                console.log(`Ver os 10 que mais consumiram (A)`);
-                console.log(`Ver os 10 que menos consumiram (B)`);
-                let revPro = ent.receberTexto(`R: `)
-                while (!"AB".includes(revPro.toUpperCase())) {
-                    console.log(`Operação não entendida.`);
+                if (p == 0) {
                     console.log(`Ver os 10 que mais consumiram (A)`);
                     console.log(`Ver os 10 que menos consumiram (B)`);
-                    revPro = ent.receberTexto(`R: `)
+                    let revPro = ent.receberTexto(`R: `)
+                    while (!"AB".includes(revPro.toUpperCase())) {
+                        console.log(`Operação não entendida.`);
+                        console.log(`Ver os 10 que mais consumiram (A)`);
+                        console.log(`Ver os 10 que menos consumiram (B)`);
+                        revPro = ent.receberTexto(`R: `)
+                    }
+                    let listaCliente = new ListagemClientes(empresa.getClientes)
+                    listaCliente.listaProQTD((revPro == "A") ? false : true)
+                    break
+                } else {
+                    ListarMaisComprados(p - 1)
+                    break
                 }
-                let listaCliente = new ListagemClientes(empresa.getClientes)
-                listaCliente.listaProQTD((revPro == "A") ? false : true)
-                break
             case 3:
-                console.log(`Ver os 10 que mais consumiram (A)`);
-                console.log(`Ver os 10 que menos consumiram (B)`);
-                let revSer = ent.receberTexto(`R: `)
-                while (!"AB".includes(revSer.toUpperCase())) {
-                    console.log(`Operação não entendida.`);
+                if (p == 0) {
                     console.log(`Ver os 10 que mais consumiram (A)`);
                     console.log(`Ver os 10 que menos consumiram (B)`);
-                    revSer = ent.receberTexto(`R: `)
+                    let revSer = ent.receberTexto(`R: `)
+                    while (!"AB".includes(revSer.toUpperCase())) {
+                        console.log(`Operação não entendida.`);
+                        console.log(`Ver os 10 que mais consumiram (A)`);
+                        console.log(`Ver os 10 que menos consumiram (B)`);
+                        revSer = ent.receberTexto(`R: `)
+                    }
+                    let listaCliente2 = new ListagemClientes(empresa.getClientes)
+                    listaCliente2.listaSerQTD((revSer == "A") ? false : true)
+                    break
+                } else {
+                    break
                 }
-                let listaCliente2 = new ListagemClientes(empresa.getClientes)
-                listaCliente2.listaSerQTD((revSer == "A") ? false : true)
-                break
             case 4:
-                let gen = ent.receberTexto(`Digite o genêro que deseja (M ou F): `).toUpperCase()
-                while (!"MF".includes(gen)) {
-                    gen = ent.receberTexto(`Operação não entendida, digite de novo (M ou F): `)
+                if (p == 0) {
+                    let gen = ent.receberTexto(`Digite o genêro que deseja (M ou F): `).toUpperCase()
+                    while (!"MF".includes(gen)) {
+                        gen = ent.receberTexto(`Operação não entendida, digite de novo (M ou F): `)
+                    }
+                    let listaGen = new ListagemClientes(empresa.getClientes.filter((e) => e.genero == gen))
+                    listaGen.listar()
+                    break
+                } else {
+                    console.log(`Operação não entendida :(`)
+                    break
                 }
-                let listaGen = new ListagemClientes(empresa.getClientes.filter((e) => e.genero == gen))
-                listaGen.listar()
-                break
             case 5:
-                let listaGas = new ListagemClientes(empresa.getClientes)
-                listaGas.listaGasto()
-                break
+                if (p == 0) {
+                    let listaGas = new ListagemClientes(empresa.getClientes)
+                    listaGas.listaGasto()
+                    break
+                } else {
+                    console.log(`Operação não entendida :(`)
+                    break
+                }
             case 0:
                 exe = false
                 console.log(`Voltando`)

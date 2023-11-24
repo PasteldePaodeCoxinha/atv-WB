@@ -28,7 +28,13 @@ export default class ListagemProdutos extends Listagem {
         return produto
     }
 
-    public proMaisConsu(){
-        let lisPro = this.produtos.splice(0)
+    public maisConsu() {
+        let lisPro = this.produtos.slice(0).sort((a, b) => b.getComprado[2] - a.getComprado[2])
+        lisPro.forEach((p) => {
+            console.log(`\nProduto: ${p.nome}`);
+            console.log(`Preço: ${p.preco}`);
+            console.log(`Comprado por ${p.getComprado[2]} pessoas`);
+            console.log(`------------------------------------------------------`);
+        })
     }
 }

@@ -36,7 +36,11 @@ export default class clienteConsumiu {
                     produto = todosProdutos.getUmProduto(produtoNome)
                 }
                 this.cliente.setProdutosConsumidos = produto
-                produto.compradoMaisUm()
+                if (this.cliente.genero == "M") {
+                    produto.compradoMaisUm(0)
+                } else if (this.cliente.genero == "F") {
+                    produto.compradoMaisUm(1)
+                }
             }
             else if (res == 2) {
                 let servicoNome = this.entrada.receberTexto(`Digite o nome do serviço: `)
@@ -47,7 +51,11 @@ export default class clienteConsumiu {
                     servico = todosServicos.getUmServico(servicoNome)
                 }
                 this.cliente.setServicosConsumidos = servico
-                servico.compradoMaisUm()
+                if (this.cliente.genero == "M") {
+                    servico.compradoMaisUm(0)
+                } else if (this.cliente.genero == "F") {
+                    servico.compradoMaisUm(1)
+                }
             }
             else {
                 console.log(`Operação náo entendida`);

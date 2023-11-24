@@ -17,7 +17,10 @@ export default class CadastroCliente extends Cadastro {
         console.log(`\nInício do cadastro do cliente`);
         let nome = this.entrada.receberTexto(`Por favor informe o nome do cliente: `)
         let nomeSocial = this.entrada.receberTexto(`Por favor informe o nome social do cliente: `)
-        let genero = this.entrada.receberTexto(`Por favor informe o seu gênero (M ou F): `)
+        let genero = this.entrada.receberTexto(`Por favor informe o seu gênero (M ou F): `).toUpperCase()
+        while (!"MF".includes(genero)) {
+            genero = this.entrada.receberTexto(`Resposta inválida digite de novo (M ou F): `).toUpperCase()
+        }
         let valorCpf = this.entrada.receberTexto(`Por favor informe o número do cpf: `);
         let dataCpf = this.entrada.receberTexto(`Por favor informe a data de emissão do cpf (dd/mm/yyyy): `);
         let partesDataCpf = dataCpf.split('/')
@@ -31,6 +34,9 @@ export default class CadastroCliente extends Cadastro {
         for (let i = 0; i < qtdRg; i++) {
             let valorRg = this.entrada.receberTexto(`Por favor informe o número do RG: `);
             let dataRg = this.entrada.receberTexto(`Por favor informe a data de emissão do RG (dd/mm/yyyy): `);
+            while (dataRg.split("/").length < 3 || dataRg.split("/").length > 3) {
+                dataRg = this.entrada.receberTexto(`Data invalidar, digite de novo (dd/mm/yyyy): `)
+            }
             let partesDataRg = dataRg.split('/')
             let anoRg = new Number(partesDataRg[2].valueOf()).valueOf()
             let mesRg = new Number(partesDataRg[1].valueOf()).valueOf()
