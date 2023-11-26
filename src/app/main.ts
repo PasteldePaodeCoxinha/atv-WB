@@ -51,10 +51,11 @@ const Deletar = (op: number) => {
     empresa[possi[op]] = deletar[op].deletar()
 }
 
-const ListarMaisComprados = (op) => {
+const ListarMaisComprados = (op, g) => {
+    const gen = { "M": 0, "F": 1, "T": 2 }
     let listar = [new ListagemProdutos(empresa.getProdutos),
     new ListagemServicos(empresa.getServicos)]
-    listar[op].maisConsu()
+    listar[op].maisConsu(gen[g])
 }
 
 const Listagens = (p: number) => {
@@ -86,7 +87,7 @@ const Listagens = (p: number) => {
                     console.log(`Ver os 10 que mais consumiram (A)`);
                     console.log(`Ver os 10 que menos consumiram (B)`);
                     let revPro = ent.receberTexto(`R: `)
-                    while (!"AB".includes(revPro.toUpperCase())) {
+                    while (!"AB".includes(revPro.toUpperCase()) || revPro == "") {
                         console.log(`Operação não entendida.`);
                         console.log(`Ver os 10 que mais consumiram (A)`);
                         console.log(`Ver os 10 que menos consumiram (B)`);
@@ -96,7 +97,7 @@ const Listagens = (p: number) => {
                     listaCliente.listaProQTD((revPro == "A") ? false : true)
                     break
                 } else {
-                    ListarMaisComprados(p - 1)
+                    ListarMaisComprados(p - 1, "T")
                     break
                 }
             case 3:
@@ -104,7 +105,7 @@ const Listagens = (p: number) => {
                     console.log(`Ver os 10 que mais consumiram (A)`);
                     console.log(`Ver os 10 que menos consumiram (B)`);
                     let revSer = ent.receberTexto(`R: `)
-                    while (!"AB".includes(revSer.toUpperCase())) {
+                    while (!"AB".includes(revSer.toUpperCase()) || revSer == "") {
                         console.log(`Operação não entendida.`);
                         console.log(`Ver os 10 que mais consumiram (A)`);
                         console.log(`Ver os 10 que menos consumiram (B)`);
@@ -114,12 +115,17 @@ const Listagens = (p: number) => {
                     listaCliente2.listaSerQTD((revSer == "A") ? false : true)
                     break
                 } else {
+                    let possiGen = ent.receberTexto(`Digite o genêro desejado (M ou F): `).toUpperCase()
+                    while (!"MF".includes(possiGen) || possiGen == "") {
+                        possiGen = ent.receberTexto(`Resposata inválida, digite de novo (M ou F): `).toUpperCase()
+                    }
+                    ListarMaisComprados(p - 1, possiGen)
                     break
                 }
             case 4:
                 if (p == 0) {
                     let gen = ent.receberTexto(`Digite o genêro que deseja (M ou F): `).toUpperCase()
-                    while (!"MF".includes(gen)) {
+                    while (!"MF".includes(gen) || gen == "") {
                         gen = ent.receberTexto(`Operação não entendida, digite de novo (M ou F): `)
                     }
                     let listaGen = new ListagemClientes(empresa.getClientes.filter((e) => e.genero == gen))
@@ -192,6 +198,9 @@ const opcoes = (p: number) => {
                     let contReq = new Entrada()
                     registrarConsumo.consumir()
                     cont = contReq.receberTexto(`Você deseja registrar as compras de outro cliente (S ou N): `).toUpperCase()
+                    while (!"SN".includes(cont) || cont == "") {
+                        cont = contReq.receberTexto(`Resposta inválida, digite de novo (S ou N): `).toUpperCase()
+                    }
                 }
                 break;
             case 0:

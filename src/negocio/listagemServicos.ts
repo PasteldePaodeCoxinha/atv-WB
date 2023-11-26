@@ -28,12 +28,12 @@ export default class ListagemServicos extends Listagem {
         return servico
     }
 
-    public maisConsu() {
-        let lisSer = this.servicos.slice(0).sort((a, b) => b.getComprado[2] - a.getComprado[2])
+    public maisConsu(g) {
+        let lisSer = this.servicos.slice(0).sort((a, b) => b.getComprado[g] - a.getComprado[g])
         lisSer.forEach((p) => {
             console.log(`\Serviço: ${p.nome}`);
             console.log(`Preço: ${p.preco}`);
-            console.log(`Comprado por ${p.getComprado[2]} pessoas`);
+            console.log(`Comprado por ${p.getComprado[g]} pessoas`);
             console.log(`------------------------------------------------------`);
         })
     }
