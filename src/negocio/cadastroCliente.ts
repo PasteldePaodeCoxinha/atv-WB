@@ -15,8 +15,12 @@ export default class CadastroCliente extends Cadastro {
         this.entrada = new Entrada()
     }
     public cadastrar(): void {
-        console.log(`\nInício do cadastro do cliente`);
+        console.log(`\nInício do cadastro do cliente (Digite 0 para cancelar)`);
+        // Nome
         let nome = this.entrada.receberTexto(`Por favor informe o nome do cliente: `)
+        if (nome == "0") {
+            return
+        }
         while (new ListagemClientes(this.clientes).getUmCliente(nome) != undefined || nome == "") {
             if (nome == "") {
                 nome = this.entrada.receberTexto(`Você tem que digitar um nome: `)
@@ -24,23 +28,28 @@ export default class CadastroCliente extends Cadastro {
                 nome = this.entrada.receberTexto(`Esse cliente já existe, digite de novo: `)
             }
         }
+        // Nome social
         let nomeSocial = this.entrada.receberTexto(`Por favor informe o nome social do cliente: `)
+
+        // Genêro
         let genero = this.entrada.receberTexto(`Por favor informe o seu gênero (M ou F): `).toUpperCase()
         while (!"MF".includes(genero) || genero == "") {
             genero = this.entrada.receberTexto(`Resposta inválida digite de novo (M ou F): `).toUpperCase()
         }
+
+        // CPF
         let valorCpf = this.entrada.receberTexto(`Por favor informe o número do cpf: `);
-        while ((valorCpf.split.length != 11 || valorCpf == "") && !+valorCpf) {
+        while (valorCpf.split("").length != 11 || valorCpf == "" || isNaN(Number(valorCpf))) {
             valorCpf = this.entrada.receberTexto(`CPF invalido digite denovo: `)
         }
         let dataCpf = this.entrada.receberTexto(`Por favor informe a data de emissão do cpf (dd/mm/yyyy): `);
         while (dataCpf.split("/").length < 3 || dataCpf.split("/").length > 3 || dataCpf == "") {
-            dataCpf = this.entrada.receberTexto(`Data invalidar, digite de novo (dd/mm/yyyy): `)
+            dataCpf = this.entrada.receberTexto(`Data invalida, digite de novo (dd/mm/yyyy): `)
         }
         let partesDataCpf = dataCpf.split('/')
         let anoCpf = new Number(partesDataCpf[2].valueOf()).valueOf()
         let mesCpf = new Number(partesDataCpf[1].valueOf()).valueOf()
-        while (!(+mesCpf in Array.from(Array(5).keys()).map(x => x + 1))) {
+        while (!(mesCpf in Array.from(Array(1, 13).keys()).map(x => x + 1))) {
             mesCpf = this.entrada.receberNumero(`Mês inválido digite de novo: `)
         }
         let diaCpf = new Number(partesDataCpf[0].valueOf()).valueOf()
@@ -49,14 +58,17 @@ export default class CadastroCliente extends Cadastro {
         }
         let dataEmissaoCpf = new Date(anoCpf, mesCpf, diaCpf)
         let cpf = new CPF(valorCpf, dataEmissaoCpf);
+
         let cliente = new Cliente(nome, nomeSocial, genero, cpf);
+
+        // RG
         let qtdRg = this.entrada.receberNumero(`Digite quantos RG's você possui: `);
         while (qtdRg > 27 || qtdRg < 1) {
             qtdRg = this.entrada.receberNumero(`Quantidade de RG inválida: `)
         }
         for (let i = 0; i < qtdRg; i++) {
             let valorRg = this.entrada.receberTexto(`Por favor informe o número do RG: `);
-            while ((valorRg.split.length != 9 || valorRg == "") && !+valorRg) {
+            while (valorRg.split("").length != 9 || valorRg == "" || isNaN(Number(valorRg))) {
                 valorRg = this.entrada.receberTexto(`RG inválido digite denovo: `)
             }
             let dataRg = this.entrada.receberTexto(`Por favor informe a data de emissão do RG (dd/mm/yyyy): `);
@@ -66,7 +78,7 @@ export default class CadastroCliente extends Cadastro {
             let partesDataRg = dataRg.split('/')
             let anoRg = new Number(partesDataRg[2].valueOf()).valueOf()
             let mesRg = new Number(partesDataRg[1].valueOf()).valueOf()
-            while (!(+mesRg in Array.from(Array(5).keys()).map(x => x + 1))) {
+            while (!(mesRg in Array.from(Array(12).keys()).map(x => x + 1))) {
                 mesRg = this.entrada.receberNumero(`Mês inválido digite de novo: `)
             }
             let diaRg = new Number(partesDataRg[0].valueOf()).valueOf()
@@ -78,6 +90,8 @@ export default class CadastroCliente extends Cadastro {
             let rg = new RG(valorRg, dataEmissaoRg);
             cliente.setRgs = rg
         }
+
+        // Telefone
         let qtdTel = this.entrada.receberNumero(`Digite quantos telefones/celulares você possui: `);
         for (let i = 0; i < qtdTel; i++) {
             let dddTel = this.entrada.receberTexto(`Por favor informe o DDD do seu telefone/celular: `);
@@ -85,12 +99,13 @@ export default class CadastroCliente extends Cadastro {
                 dddTel = this.entrada.receberTexto(`DDD inválido, digite de novo: `)
             }
             let numTel = this.entrada.receberTexto(`Por favor informe o número do seu telefone/celular: `);
-            while (numTel.split.length != 9 || !+numTel) {
+            while (numTel.split("").length != 9 || isNaN(Number(numTel))) {
                 numTel = this.entrada.receberTexto(`Número inválido, digite de novo: `)
             }
             let telefone = new Telefone(dddTel, numTel);
             cliente.setTel = telefone
         }
+
         this.clientes.push(cliente)
         console.log(`\nCLIENTE CADASTRADO :)\n`);
     }

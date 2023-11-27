@@ -73,7 +73,7 @@ const Listagens = (p: number) => {
             console.log(`2 - Listar por ${possi[p - 1]} mais comprados`);
             console.log(`3 - Listar por ${possi[p - 1]} mais comprados por genêro`);
         }
-        console.log(`0 - Sair`);
+        console.log(`0 - Voltar`);
 
         let ent = new Entrada()
         let op = ent.receberNumero(`Digite uma opção: `)
@@ -165,7 +165,7 @@ const opcoes = (p: number) => {
         console.log(`3 - Atualizar`);
         console.log(`4 - Deletar`);
         (p == 0) ? console.log(`5 - Registrar Compra`) : ""
-        console.log(`0 - Sair`);
+        console.log(`0 - Voltar`);
 
         let ent = new Entrada()
         let op = ent.receberNumero(`Digite uma opção: `)

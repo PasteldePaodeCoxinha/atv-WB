@@ -12,7 +12,10 @@ export default class DeletaServico extends Deleta {
     }
 
     public deletar() {
-        let nome = this.entrada.receberTexto(`Digite o nome do Serviço: `)
+        let nome = this.entrada.receberTexto(`Digite o nome do Serviço (Digite 0 para cancelar): `)
+        if (nome == "0") {
+            return
+        }
         let servico = this.servicos.filter((e) => e.nome == nome)
         while (servico.length < 0) {
             nome = this.entrada.receberTexto(`Esse serviço não exite, digite de novo: `)

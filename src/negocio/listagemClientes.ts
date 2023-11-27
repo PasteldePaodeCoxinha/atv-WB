@@ -24,12 +24,12 @@ export default class ListagemClientes extends Listagem {
 
             console.log(`-----------PRODUTOS CONSUMIDOS-----------`);
             cliente.getProdutosConsumidos.forEach(pro => {
-                console.log(`${pro.nome}`);
+                process.stdout.write(`${pro.nome} || `)
             });
 
-            console.log(`-----------SERVIÇOS CONSUMIDOS-----------`);
+            console.log(`\n-----------SERVIÇOS CONSUMIDOS-----------`);
             cliente.getServicosConsumidos.forEach(ser => {
-                console.log(`${ser.nome}`);
+                process.stdout.write(`${ser.nome} || `)
             });
 
             console.log(`\nTotal gasto: `);
